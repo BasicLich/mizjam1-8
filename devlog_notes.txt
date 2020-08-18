@@ -1,0 +1,72 @@
+started: 2020-08-14 @ 19:00
+
+- looked at the art kit and wrote down some ideas
+
+19:59PM
+- loaded tileset into godot and tested it out
+- wasted time not knowing where the import settings were, "filter" makes the art blurry
+
+- decided on making some game about going through a map looking for something
+- also decided to not bother with sprite animations since the art lacks much animated art
+
+21:00
+- decided on making a game about looking for your dog
+- tested out tile map in godot and made the game end after finding the dog sprite
+
+22:16PM
+- added in bones to find along the way
+- noticed arrows in art set, made me think about having some rhythm/DDR element in the game
+
+23:30PM
+- figured out how to switch scenes in godot
+- made a really basic menu before jumping into the game
+
+- figured out how to use cameras in godot, and added one that smoothly follows the player
+
+stopped: 2020-08-15 @ 00:27
+
+started: 2020-08-15 @ 12:00
+
+- prototype some ideas for rhythm minigame
+- considering making the score from the minigame affect the player somehow
+- thought about how to sync up tempo with rhythm notes on screen
+
+I took lots of breaks, and forgot to keep track of time, then started again in the evening sometime?
+
+- wasted a lot of time reading godot documentation
+- split up all the objects in the godot scene into a bunch of subscenes
+- figured out how to instance scenes in the code
+
+- started adding enemies to the map
+- added some aggro logic to the enemies so they chase you
+
+stopped: 2020-08-15 @ ~22:00
+
+started: 2020-08-16 @ ~12:00
+
+- wrote the code the generate relatively interesting sequences of beats for the rhythm game
+- figured out how to sync up the beats with a tempo
+
+14:40
+- finished most of the logic for scoring the accuracy of beats
+
+16:30
+- wasted more time reading godot docs, trying to figure out how to add the minigame into the main scene
+
+18:35
+- finally got it working using a singleton to temporarily hold the other scene nodes, then put them back after the minigame
+
+19:18
+- noticed a slight bug in the rhythm/tempo of the minigame
+
+20:13
+- fixed the bugs and wasted more time reading docs, then stopped
+
+stopped: 2020-08-16 @ 20:13
+
+started: 2020-08-18 @ 14:48
+
+- committed the code to github finally, should have been doing it all along
+- spent some time writing up this devlog from reading through discord messages...
+
+
