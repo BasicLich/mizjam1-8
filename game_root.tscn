@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://bone.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/all_tiles.tres" type="TileSet" id=2]
+[ext_resource path="res://player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/game.gd" type="Script" id=4]
+[ext_resource path="res://dog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://enemies/enemy_knight.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/audio/8bit_track_1.ogg" type="AudioStream" id=7]
+[ext_resource path="res://enemies/enemy_ogre.tscn" type="PackedScene" id=8]
+
+[node name="game_root" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="world" type="Node2D" parent="."]
+
+[node name="music" type="AudioStreamPlayer" parent="world"]
+stream = ExtResource( 7 )
+volume_db = -10.0
+autoplay = true
+
+[node name="map" type="Node2D" parent="world"]
+
+[node name="ground" type="TileMap" parent="world/map"]
+z_index = -1
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 18, 0, 327688, 65554, 0, 327688, 131090, 0, 327688, 196626, 0, 327688, 262144, 0, 5, 262162, 0, 327688, 262169, 0, 5, 262170, 0, 5, 262171, 0, 5, 327680, 0, 7, 327681, 0, 5, 327684, 0, 7, 327688, 0, 7, 327698, 0, 327688, 327708, 0, 5, 327709, 0, 7, 393218, 0, 7, 393223, 0, 7, 393224, 0, 7, 393234, 0, 327688, 458770, 0, 327688, 524306, 0, 327688, 524307, 0, 327688, 524308, 0, 5, 524309, 0, 5, 524310, 0, 5, 589826, 0, 5, 589827, 0, 7, 589830, 0, 7, 589834, 0, 7, 589843, 0, 327696, 655360, 0, 7, 655363, 0, 5, 655379, 0, 327688, 655383, 0, 7, 655384, 0, 7, 655386, 0, 7, 655389, 0, 5, 720896, 0, 7, 720915, 0, 327688, 720916, 0, 327688, 786432, 0, 7, 786448, 0, 5, 786452, 0, 327688, 786458, 0, 7, 786459, 0, 7, 786461, 0, 5, 851969, 0, 7, 851971, 0, 7, 851987, 0, 7, 851988, 0, 327688, 851991, 0, 5, 851992, 0, 7, 851995, 0, 7, 917507, 0, 7, 917509, 0, 6, 917511, 0, 7, 917513, 0, 7, 917515, 0, 7, 917517, 0, 5, 917519, 0, 5, 917520, 0, 5, 917524, 0, 327688, 983044, 0, 7, 983045, 0, 5, 983046, 0, 5, 983047, 0, 7, 983051, 0, 5, 983060, 0, 327688, 983061, 0, 327688, 983065, 0, 5, 1048597, 0, 327688, 1048598, 0, 327688, 1048600, 0, 5 )
+
+[node name="on_ground" type="TileMap" parent="world/map"]
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 1, 0, 131075, 0, 65537, 131087, 0, 65537, 196617, 0, 65537, 262164, 0, 65537, 327701, 0, 65539, 393232, 1, 0, 458753, 0, 65539, 458779, 0, 65537, 720905, 0, 65537, 786453, 0, 65537 )
+
+[node name="player" parent="world" instance=ExtResource( 3 )]
+position = Vector2( 238, 124 )
+
+[node name="dog" parent="world" instance=ExtResource( 5 )]
+
+[node name="bone" parent="world" instance=ExtResource( 1 )]
+position = Vector2( 223, 26 )
+
+[node name="bone2" parent="world" instance=ExtResource( 1 )]
+position = Vector2( 391, 190 )
+
+[node name="enemy" parent="world" instance=ExtResource( 8 )]
+position = Vector2( 182, 29 )
+
+[node name="enemy2" parent="world" instance=ExtResource( 6 )]
+position = Vector2( 415, 215 )

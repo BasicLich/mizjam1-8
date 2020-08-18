@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/colored_transparent_packed.png" type="Texture" id=1]
+[ext_resource path="res://scripts/ending.gd" type="Script" id=2]
+[ext_resource path="res://assets/messages.png" type="Texture" id=3]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 1 )
+region = Rect2( 400, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 496, 112, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 68, 12 )
+
+[node name="ending" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="player" type="Sprite" parent="."]
+position = Vector2( 230, 138 )
+scale = Vector2( 2, 2 )
+texture = SubResource( 1 )
+
+[node name="dog" type="Sprite" parent="."]
+position = Vector2( 271, 138 )
+scale = Vector2( 2, 2 )
+texture = SubResource( 2 )
+
+[node name="you_win" type="Sprite" parent="."]
+position = Vector2( 250, 107 )
+scale = Vector2( 2, 2 )
+texture = SubResource( 3 )
