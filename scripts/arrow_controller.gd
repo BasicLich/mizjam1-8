@@ -18,10 +18,17 @@ var ARROW_DIST_GOOD:float = 5.0
 var ARROW_DIST_MISS:float = 20.0
 
 enum Hit {
-	MISS,
-	GOOD,
-	GREAT,
-	PERFECT
+	MISS = 0,
+	GOOD = 1,
+	GREAT = 2,
+	PERFECT = 3
+}
+
+var scores = {
+	Hit.PERFECT: 0,
+	Hit.GREAT: 0,
+	Hit.GOOD: 0,
+	Hit.MISS: 0
 }
 
 
@@ -74,7 +81,9 @@ func _input(event):
 		if hit:
 			hits.append(hit)
 
-	# TODO score hits here
+	# increment the score for each hit type
+	for h in hits:
+		scores[h] += 1
 
 func handle_arrow_hit(target:Vector2, arrows:Array):
 	for a in arrows:

@@ -69,4 +69,16 @@ started: 2020-08-18 @ 14:48
 - committed the code to github finally, should have been doing it all along
 - spent some time writing up this devlog from reading through discord messages...
 
+16:20
+- added scores to the end of the minigame screen
 
+stopped: 2020-08-18 @ 16:20
+
+started: 2020-08-18 @ 19:48
+- added final scores to the end game screen
+
+20:49
+- wasted a ton of time messing around with 8bit fonts that refused to display, finally found one that worked
+- updated all numbers in the game to use the 8bit font
+
+stopped: 2020-08-18 @ 20:56

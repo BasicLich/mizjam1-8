@@ -21,6 +21,13 @@ var MOVES = {
 	"walk_l": ["right", "up", "down", "left"]
 }
 
+enum Hit {
+	MISS = 0,
+	GOOD = 1,
+	GREAT = 2,
+	PERFECT = 3
+}
+
 var arrows = {
 	"left": [],
 	"down": [],
@@ -31,6 +38,7 @@ var rng
 var pixel_per_sec
 var delay_timer
 var tempo_timer
+var scores
 var ended = false
 var course_arrows = []
 var flash_message = preload("res://flash_message.tscn")
@@ -58,6 +66,7 @@ func _ready():
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
 
+	scores = get_parent().get_node("arrow_controller").scores
 	course_arrows = generate_course(rhythm_game.TOTAL_BEATS)
 	
 	tempo_timer = Timer.new()
@@ -87,16 +96,18 @@ func _process(delta):
 
 				var msg = flash_message.instance()
 				msg.type = "miss"
-				# TODO score a miss here
 				get_parent().add_child(msg)
+				scores[Hit.MISS] += 1
 	
 	if all_empty and len(course_arrows) == 0:
 		tempo_timer.stop()
 		for c in dance_chars:
 			c.set_rotation_degrees(0)
+		calculate_score()
 		
+		# wait a while before ending the round
 		delay_timer = Timer.new()
-		delay_timer.wait_time = 2.0
+		delay_timer.wait_time = 4.0
 		delay_timer.autostart = true
 		delay_timer.one_shot = true
 		delay_timer.connect("timeout", self, "end_course")
@@ -112,13 +123,30 @@ func start_course():
 	tempo_timer.start()
 
 
+func calculate_score():
+	var round_score = get_parent().get_node("round_score")
+	
+	# yikes this is against DRY but oh well
+	global.total_perfects += scores[Hit.PERFECT]
+	global.total_greats += scores[Hit.GREAT]
+	global.total_goods += scores[Hit.GOOD]
+	global.total_misses += scores[Hit.MISS]
+	
+	round_score.get_node("perfect/score").text = str(scores[Hit.PERFECT])
+	round_score.get_node("great/score").text = str(scores[Hit.GREAT])
+	round_score.get_node("good/score").text = str(scores[Hit.GOOD])
+	round_score.get_node("miss/score").text = str(scores[Hit.MISS])
+	round_score.visible = true
+
+
 func end_course():
 	print("COURSE ENDED")
 	call_deferred("emit_signal", "rhythm_complete", get_parent())
 
 
 func tempo_tick():
-		# rotate characters back and forth
+	# rotate characters back and forth
+	# yes I should probably use a sinwave here, but too lazy
 	for c in dance_chars:
 		if c.rotation_degrees < 0:
 			c.set_rotation_degrees(20)
