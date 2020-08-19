@@ -83,8 +83,18 @@ started: 2020-08-18 @ 19:48
 
 stopped: 2020-08-18 @ 20:56
 
-started: 2020-08-18 @ 09:18
+started: 2020-08-19 @ 09:18
 
 - added instructions scene with some vague rules/goals
 - merged main menu and instructions scenes to keep the menu music playing
 - added hover style changes to menu items
+
+10:03
+- added lose condition if you miss more than 50% of beats in a round
+- updated ending scene to include "game over" message
+
+10:28
+- added really basic beat sounds to rhythm mode
+- made perfects/greats a bit easier to get
+
+stopped: 2020-08-19 @ 10:34

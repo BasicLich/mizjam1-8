@@ -12,8 +12,8 @@ var SCALE_FACTOR = Vector2(2.5, 2.5)
 var SCALE_SPEED = 20
 
 # maximum distance a moving arrow will be counted as a "hit"
-var ARROW_DIST_PERFECT:float = 1.0
-var ARROW_DIST_GREAT:float = 1.6
+var ARROW_DIST_PERFECT:float = 1.2
+var ARROW_DIST_GREAT:float = 1.8
 var ARROW_DIST_GOOD:float = 5.0
 var ARROW_DIST_MISS:float = 20.0
 
@@ -56,30 +56,36 @@ func _process(delta):
 
 func _input(event):
 	var hits = []
+	var last_hit = null
 	
 	if event.is_action_pressed("ui_up"):
 		var ups = rhythm_controller.arrows["up"]
-		var hit = handle_arrow_hit(up_arrow.global_position, ups)
-		if hit:
-			hits.append(hit)
+		last_hit = handle_arrow_hit(up_arrow.global_position, ups)
+		if last_hit:
+			hits.append(last_hit)
 
 	if event.is_action_pressed("ui_down"):
 		var downs = rhythm_controller.arrows["down"]
-		var hit = handle_arrow_hit(down_arrow.global_position, downs)
-		if hit:
-			hits.append(hit)
+		last_hit = handle_arrow_hit(down_arrow.global_position, downs)
+		if last_hit:
+			hits.append(last_hit)
 
 	if event.is_action_pressed("ui_right"):
 		var rights = rhythm_controller.arrows["right"]
-		var hit = handle_arrow_hit(right_arrow.global_position, rights)
-		if hit:
-			hits.append(hit)
+		last_hit = handle_arrow_hit(right_arrow.global_position, rights)
+		if last_hit:
+			hits.append(last_hit)
 
 	if event.is_action_pressed("ui_left"):
 		var lefts = rhythm_controller.arrows["left"]
-		var hit = handle_arrow_hit(left_arrow.global_position, lefts)
-		if hit:
-			hits.append(hit)
+		last_hit = handle_arrow_hit(left_arrow.global_position, lefts)
+		if last_hit:
+			hits.append(last_hit)
+
+	# only create a flash message for the last hit, so multiple messages don't overlap
+	# it's a lazy but easy solution
+	if last_hit:
+		create_flash_message(last_hit)
 
 	# increment the score for each hit type
 	for h in hits:
@@ -92,27 +98,29 @@ func handle_arrow_hit(target:Vector2, arrows:Array):
 		
 		if dist <= ARROW_DIST_PERFECT:
 			hit = Hit.PERFECT
-			var msg = flash_message.instance()
-			msg.type = "perfect"
-			get_parent().add_child(msg)
 		elif dist <= ARROW_DIST_GREAT:
 			hit = Hit.GREAT
-			var msg = flash_message.instance()
-			msg.type = "great"
-			get_parent().add_child(msg)
 		elif dist <= ARROW_DIST_GOOD:
 			hit = Hit.GOOD
-			var msg = flash_message.instance()
-			msg.type = "good"
-			get_parent().add_child(msg)
 		elif dist <= ARROW_DIST_MISS:
 			hit = Hit.MISS
-			var msg = flash_message.instance()
-			msg.type = "miss"
-			get_parent().add_child(msg)
 		
 		if hit:
 			a.queue_free()
 			arrows.erase(a)
 		
+		# there should only ever be one hit per column at a time
+		# don't need to keep looping
 		return hit
+
+func create_flash_message(hit):
+	var msg = flash_message.instance()
+	if hit == Hit.PERFECT:
+		msg.type = "perfect"
+	elif hit == Hit.GREAT:
+		msg.type = "great"
+	elif hit == Hit.GOOD:
+		msg.type = "good"
+	elif hit == Hit.MISS:
+		msg.type = "miss"
+	get_parent().add_child(msg)

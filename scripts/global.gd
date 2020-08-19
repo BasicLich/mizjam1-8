@@ -9,3 +9,4 @@ var total_goods = 0
 var total_misses = 0
 
 var world_scene = null
+var lose = false

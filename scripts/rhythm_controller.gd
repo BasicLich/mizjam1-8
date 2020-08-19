@@ -1,6 +1,6 @@
 extends Node2D
 
-var TOP_EDGE = -200
+var TOP_EDGE = -216
 var ARROW_HEIGHT = 32.0
 
 var MOVES = {
@@ -38,6 +38,7 @@ var rng
 var pixel_per_sec
 var delay_timer
 var tempo_timer
+var tick = 0
 var scores
 var ended = false
 var course_arrows = []
@@ -53,6 +54,8 @@ onready var rhythm_game = get_parent()
 onready var char_left = get_parent().get_node("char_left")
 onready var char_right = get_parent().get_node("char_right")
 onready var dance_chars = [char_left, char_right]
+onready var kick_sound = get_parent().get_node("kick")
+onready var snare_sound = get_parent().get_node("snare")
 
 signal rhythm_complete(rhythm_inst)
 
@@ -118,7 +121,6 @@ func _process(delta):
 
 
 func start_course():
-	print("COURSE STARTED")
 	remove_child(delay_timer)
 	tempo_timer.start()
 
@@ -140,7 +142,10 @@ func calculate_score():
 
 
 func end_course():
-	print("COURSE ENDED")
+	# check if misses > 50% of beats
+	if scores[Hit.MISS] > (scores[Hit.PERFECT] + scores[Hit.GREAT] + scores[Hit.GOOD]):
+		global.lose = true
+
 	call_deferred("emit_signal", "rhythm_complete", get_parent())
 
 
@@ -152,6 +157,12 @@ func tempo_tick():
 			c.set_rotation_degrees(20)
 		else:
 			c.set_rotation_degrees(-20)
+	
+	if (tick % 2) == 0:
+		kick_sound.play()
+	else:
+		snare_sound.play()
+	tick += 1
 
 	if len(course_arrows) == 0:
 		return

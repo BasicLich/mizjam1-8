@@ -14,7 +14,6 @@ func _on_start_rhythm_mode(enemy, player):
 	
 	# temporarily remove the world scene from the tree
 	var world = get_node("world")
-	#world.get_node("music").stop()
 	remove_child(world)
 	global.world_scene = world
 	
@@ -26,7 +25,9 @@ func _on_rhythm_complete(rhythm_inst):
 	remove_child(rhythm_inst)
 	var world = global.world_scene
 	add_child(world)
-	#world.get_node("music").start()
 	
 	global.world_scene = null
 	rhythm_inst.queue_free()
+	
+	if global.lose:
+		get_tree().change_scene("res://ending.tscn")
