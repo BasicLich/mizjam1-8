@@ -82,3 +82,9 @@ started: 2020-08-18 @ 19:48
 - updated all numbers in the game to use the 8bit font
 
 stopped: 2020-08-18 @ 20:56
+
+started: 2020-08-18 @ 09:18
+
+- added instructions scene with some vague rules/goals
+- merged main menu and instructions scenes to keep the menu music playing
+- added hover style changes to menu items
