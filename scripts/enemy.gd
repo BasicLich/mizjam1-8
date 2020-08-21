@@ -1,6 +1,6 @@
 extends KinematicBody2D
 
-export var SPEED = 30
+export var MOVE_SPEED = 30
 export var MAX_FOLLOW_DIST = 150
 export var TEMPO = 120
 export var TOTAL_BEATS = 20
@@ -17,6 +17,14 @@ func _ready():
 	connect("start_rhythm_mode", game, "_on_start_rhythm_mode")
 
 
+func _process(delta):
+	if follow:
+		var ticks = OS.get_ticks_msec() / 100
+		$Sprite.rotation = sin(ticks) / 4
+	else:
+		$Sprite.rotation = 0
+
+
 func _physics_process(delta):
 	if follow:
 		var dist = position.distance_to(follow_body.position)
@@ -25,7 +33,7 @@ func _physics_process(delta):
 			follow = false
 			return
 
-		var move = position.direction_to(follow_body.position) * SPEED
+		var move = position.direction_to(follow_body.position) * MOVE_SPEED
 		move_and_slide(move)
 
 		for i in get_slide_count():

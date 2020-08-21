@@ -120,3 +120,12 @@ started: 2020-08-20 @ 18:54
 
 - adding bones collected HUD
 - wasted a bunch of time figuring out that I needed to add a CanvasLayer to make the HUD float above the world view
+
+20:15
+- finished adding a total of 80 bones
+- adding more grass/flowers/style to the map to make it look nicer
+
+21:03
+- took a break, then added some really simple rotation during movement to make it more visually appealing
+
+stopped: 2020-08-20 @ 21:04

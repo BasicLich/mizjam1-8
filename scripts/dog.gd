@@ -6,7 +6,8 @@ var spawns = [
 	Vector2(184, 69), # tree alcove
 	Vector2(45, 95), # lake shore
 	Vector2(0, -55), # north river shore
-	Vector2(157, 124) # garden
+	Vector2(157, 124), # garden
+	Vector2(62, -36) # town square
 ]
 var rng
 
