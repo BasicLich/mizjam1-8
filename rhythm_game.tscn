@@ -145,7 +145,6 @@ scale = Vector2( 2, 2 )
 texture = SubResource( 10 )
 
 [node name="round_score" type="Node2D" parent="."]
-visible = false
 position = Vector2( 234, 132 )
 
 [node name="perfect" type="Sprite" parent="round_score"]

@@ -105,3 +105,18 @@ started: 2020-08-19 @ 20:50
 - decided on 15-20min of playtime should be enough to complete the game
 
 stopped: 2020-08-19 @ 21:36
+
+started: 2020-08-20 @ 11:40
+
+- continuing to work on the map, adding a maze section
+
+13:00
+- finished maze area, started placing more bones around the map
+- added a garden in the bottom right
+
+stopped: 2020-08-20 @ 13:55
+
+started: 2020-08-20 @ 18:54
+
+- adding bones collected HUD
+- wasted a bunch of time figuring out that I needed to add a CanvasLayer to make the HUD float above the world view

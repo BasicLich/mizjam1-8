@@ -1,6 +1,7 @@
 extends Node
 
 var bones_collected = 0
+var total_bones = 0
 
 # rhythm scores
 var total_perfects = 0

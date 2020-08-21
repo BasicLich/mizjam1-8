@@ -3,6 +3,10 @@ extends Node2D
 var rhythm_game = preload("res://rhythm_game.tscn")
 
 
+func _ready():
+	global.total_bones = $world/bones.get_child_count()
+
+
 func _on_start_rhythm_mode(enemy, player):
 	var rhythm_inst = rhythm_game.instance()
 	rhythm_inst.TEMPO = enemy.TEMPO

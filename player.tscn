@@ -22,7 +22,6 @@ z_index = 1
 texture = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 1, 11 )
 current = true
 smoothing_enabled = true
 smoothing_speed = 2.0

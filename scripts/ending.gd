@@ -7,7 +7,7 @@ func _ready():
 		$you_win.visible = true
 		$dog.visible = true
 
-	get_node("bones_collected/Label").text = str(global.bones_collected)
+	get_node("bones_collected/Label").text = str(global.bones_collected) + "/" + str(global.total_bones)
 	get_node("beats/perfect/Label").text = str(global.total_perfects)
 	get_node("beats/great/Label").text = str(global.total_greats)
 	get_node("beats/good/Label").text = str(global.total_goods)
