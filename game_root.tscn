@@ -1,13 +1,27 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://bone.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/all_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/game.gd" type="Script" id=4]
 [ext_resource path="res://dog.tscn" type="PackedScene" id=5]
+[ext_resource path="res://enemies/enemy_king.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/audio/8bit_track_1.ogg" type="AudioStream" id=7]
 [ext_resource path="res://enemies/enemy_ogre.tscn" type="PackedScene" id=8]
 [ext_resource path="res://HUD.tscn" type="PackedScene" id=9]
+[ext_resource path="res://enemies/enemy_big_monster.tscn" type="PackedScene" id=10]
+[ext_resource path="res://enemies/enemy_bug.tscn" type="PackedScene" id=11]
+[ext_resource path="res://enemies/enemy_skeleton.tscn" type="PackedScene" id=12]
+[ext_resource path="res://enemies/enemy_bug_hard.tscn" type="PackedScene" id=13]
+[ext_resource path="res://enemies/enemy_farmer.tscn" type="PackedScene" id=14]
+[ext_resource path="res://enemies/enemy_wizard.tscn" type="PackedScene" id=15]
+[ext_resource path="res://enemies/enemy_villager.tscn" type="PackedScene" id=16]
+[ext_resource path="res://enemies/enemy_knight_medium.tscn" type="PackedScene" id=17]
+[ext_resource path="res://enemies/enemy_cow.tscn" type="PackedScene" id=18]
+[ext_resource path="res://enemies/enemy_gator.tscn" type="PackedScene" id=19]
+[ext_resource path="res://enemies/enemy_villager_medium.tscn" type="PackedScene" id=20]
+[ext_resource path="res://enemies/enemy_knight.tscn" type="PackedScene" id=21]
+[ext_resource path="res://enemies/enemy_knight_hard.tscn" type="PackedScene" id=22]
 
 [node name="game_root" type="Node2D"]
 script = ExtResource( 4 )
@@ -47,8 +61,122 @@ position = Vector2( 0, 0 )
 
 [node name="enemies" type="Node2D" parent="world"]
 
-[node name="enemy" parent="world/enemies" instance=ExtResource( 8 )]
+[node name="enemy_ogre" parent="world/enemies" instance=ExtResource( 8 )]
 position = Vector2( 85, 186 )
+
+[node name="enemy_ogre2" parent="world/enemies" instance=ExtResource( 8 )]
+position = Vector2( -319, -407 )
+
+[node name="enemy_ogre3" parent="world/enemies" instance=ExtResource( 8 )]
+position = Vector2( -485, -720 )
+
+[node name="enemy_ogre4" parent="world/enemies" instance=ExtResource( 8 )]
+position = Vector2( -382, 199 )
+
+[node name="enemy_ogre5" parent="world/enemies" instance=ExtResource( 8 )]
+position = Vector2( 142, 657 )
+
+[node name="enemy_farmer" parent="world/enemies" instance=ExtResource( 14 )]
+position = Vector2( 2380, 1660 )
+
+[node name="enemy_farmer2" parent="world/enemies" instance=ExtResource( 14 )]
+position = Vector2( 2583, 1925 )
+
+[node name="enemy_farmer3" parent="world/enemies" instance=ExtResource( 14 )]
+position = Vector2( 2404, 1900 )
+
+[node name="enemy_farmer4" parent="world/enemies" instance=ExtResource( 14 )]
+position = Vector2( 2228, 2117 )
+
+[node name="enemy_skeleton" parent="world/enemies" instance=ExtResource( 12 )]
+position = Vector2( 1212, 1378 )
+
+[node name="enemy_skeleton2" parent="world/enemies" instance=ExtResource( 12 )]
+position = Vector2( 1144, 1491 )
+
+[node name="enemy_skeleton3" parent="world/enemies" instance=ExtResource( 12 )]
+position = Vector2( 1066, 1290 )
+
+[node name="enemy_bug" parent="world/enemies" instance=ExtResource( 11 )]
+position = Vector2( 2662, 1298 )
+
+[node name="enemy_bug2" parent="world/enemies" instance=ExtResource( 11 )]
+position = Vector2( 2838, 985 )
+
+[node name="enemy_bug3" parent="world/enemies" instance=ExtResource( 11 )]
+position = Vector2( 3077, 1227 )
+
+[node name="enemy_bug_hard" parent="world/enemies" instance=ExtResource( 13 )]
+position = Vector2( 3054, 1041 )
+
+[node name="enemy_big_monster" parent="world/enemies" instance=ExtResource( 10 )]
+position = Vector2( 1170, 1242 )
+
+[node name="enemy_king" parent="world/enemies" instance=ExtResource( 6 )]
+position = Vector2( 1037, -637 )
+
+[node name="enemy_knight1" parent="world/enemies" instance=ExtResource( 21 )]
+position = Vector2( -188, 2068 )
+
+[node name="enemy_knight2" parent="world/enemies" instance=ExtResource( 21 )]
+position = Vector2( 656, 2123 )
+
+[node name="enemy_knight_medium" parent="world/enemies" instance=ExtResource( 17 )]
+position = Vector2( -372, 1692 )
+
+[node name="enemy_knight_hard" parent="world/enemies" instance=ExtResource( 22 )]
+position = Vector2( -8, 1637 )
+
+[node name="enemy_wizard" parent="world/enemies" instance=ExtResource( 15 )]
+position = Vector2( -542, 1430 )
+
+[node name="enemy_knight3" parent="world/enemies" instance=ExtResource( 21 )]
+position = Vector2( 534, 1650 )
+
+[node name="enemy_knight_medium2" parent="world/enemies" instance=ExtResource( 17 )]
+position = Vector2( 186, 1253 )
+
+[node name="enemy_villager" parent="world/enemies" instance=ExtResource( 16 )]
+position = Vector2( 792, -267 )
+
+[node name="enemy_villager2" parent="world/enemies" instance=ExtResource( 16 )]
+position = Vector2( 1020, -15 )
+
+[node name="enemy_villager3" parent="world/enemies" instance=ExtResource( 16 )]
+position = Vector2( 1163, 313 )
+
+[node name="enemy_villager_medium" parent="world/enemies" instance=ExtResource( 20 )]
+position = Vector2( 1458, -242 )
+
+[node name="enemy_villager_medium2" parent="world/enemies" instance=ExtResource( 20 )]
+position = Vector2( 1603, 313 )
+
+[node name="enemy_villager_medium3" parent="world/enemies" instance=ExtResource( 20 )]
+position = Vector2( 1020, -323 )
+
+[node name="enemy_gator" parent="world/enemies" instance=ExtResource( 19 )]
+position = Vector2( 957, 960 )
+
+[node name="enemy_gator2" parent="world/enemies" instance=ExtResource( 19 )]
+position = Vector2( 1372, 1009 )
+
+[node name="enemy_gator3" parent="world/enemies" instance=ExtResource( 19 )]
+position = Vector2( 1617, 1453 )
+
+[node name="enemy_gator4" parent="world/enemies" instance=ExtResource( 19 )]
+position = Vector2( 865, 1543 )
+
+[node name="enemy_cow" parent="world/enemies" instance=ExtResource( 18 )]
+position = Vector2( 1792, 1753 )
+
+[node name="enemy_cow2" parent="world/enemies" instance=ExtResource( 18 )]
+position = Vector2( 1906, 1016 )
+
+[node name="enemy_cow3" parent="world/enemies" instance=ExtResource( 18 )]
+position = Vector2( 1989, 1451 )
+
+[node name="enemy_villager_medium4" parent="world/enemies" instance=ExtResource( 20 )]
+position = Vector2( 59, -796 )
 
 [node name="bones" type="Node2D" parent="world"]
 
@@ -83,7 +211,7 @@ position = Vector2( 1234, 1266 )
 position = Vector2( 1130, 1248 )
 
 [node name="bone11" parent="world/bones" instance=ExtResource( 1 )]
-position = Vector2( 800, 1552 )
+position = Vector2( 828, 1527 )
 
 [node name="bone12" parent="world/bones" instance=ExtResource( 1 )]
 position = Vector2( 1179, 1672 )
@@ -119,7 +247,7 @@ position = Vector2( -332, 883 )
 position = Vector2( 452, 1191 )
 
 [node name="bone23" parent="world/bones" instance=ExtResource( 1 )]
-position = Vector2( 442, 907 )
+position = Vector2( 685, 2134 )
 
 [node name="bone24" parent="world/bones" instance=ExtResource( 1 )]
 position = Vector2( -363, 1145 )
@@ -173,19 +301,16 @@ position = Vector2( 906, 1803 )
 position = Vector2( 979, 2159 )
 
 [node name="bone41" parent="world/bones" instance=ExtResource( 1 )]
-position = Vector2( 311, -316 )
+position = Vector2( 380, -115 )
 
 [node name="bone42" parent="world/bones" instance=ExtResource( 1 )]
-position = Vector2( 171, -632 )
+position = Vector2( 224, -515 )
 
 [node name="bone43" parent="world/bones" instance=ExtResource( 1 )]
-position = Vector2( -86, -790 )
+position = Vector2( 33, -790 )
 
 [node name="bone44" parent="world/bones" instance=ExtResource( 1 )]
-position = Vector2( 159, -883 )
-
-[node name="bone45" parent="world/bones" instance=ExtResource( 1 )]
-position = Vector2( 62, -812 )
+position = Vector2( 561, -808 )
 
 [node name="bone46" parent="world/bones" instance=ExtResource( 1 )]
 position = Vector2( 1394, 1956 )
@@ -275,7 +400,7 @@ position = Vector2( -506, -743 )
 position = Vector2( 127, -113 )
 
 [node name="bone75" parent="world/bones" instance=ExtResource( 1 )]
-position = Vector2( -107, -912 )
+position = Vector2( 193, 724 )
 
 [node name="bone76" parent="world/bones" instance=ExtResource( 1 )]
 position = Vector2( 734, 367 )
@@ -291,3 +416,6 @@ position = Vector2( -268, 251 )
 
 [node name="bone80" parent="world/bones" instance=ExtResource( 1 )]
 position = Vector2( 65, 1080 )
+
+[node name="bone45" parent="world/bones" instance=ExtResource( 1 )]
+position = Vector2( 659, 1570 )

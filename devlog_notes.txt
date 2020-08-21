@@ -129,3 +129,11 @@ started: 2020-08-20 @ 18:54
 - took a break, then added some really simple rotation during movement to make it more visually appealing
 
 stopped: 2020-08-20 @ 21:04
+
+started: 2020-08-21 @ 14:42
+
+- working on adding more enemy types to start populating the map
+- added knights, farmers, villagers, a king, bugs, skeletons, cows, all with slightly different rhythym difficulty
+- each area has one or two harder enemies that can be faced
+
+stopped: 2020-08-21 @ 15:53

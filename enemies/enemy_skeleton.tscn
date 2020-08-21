@@ -5,7 +5,7 @@
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 1 )
-region = Rect2( 448, 96, 16, 16 )
+region = Rect2( 464, 96, 16, 16 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 5, 7 )
@@ -15,8 +15,9 @@ radius = 50.01
 
 [node name="enemy" type="KinematicBody2D"]
 script = ExtResource( 2 )
-TEMPO = 80
-TOTAL_BEATS = 15
+MOVE_SPEED = 60
+TEMPO = 140
+TOTAL_BEATS = 40
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = SubResource( 1 )

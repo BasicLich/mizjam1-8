@@ -2,10 +2,9 @@ extends KinematicBody2D
 
 var spawns = [
 	Vector2(-34, 87), # maze
-	Vector2(71, 79), # lake island
+	Vector2(71, 82), # lake island
 	Vector2(184, 69), # tree alcove
 	Vector2(45, 95), # lake shore
-	Vector2(0, -55), # north river shore
 	Vector2(157, 124), # garden
 	Vector2(62, -36) # town square
 ]
