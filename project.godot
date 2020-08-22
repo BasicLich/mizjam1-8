@@ -15,7 +15,9 @@ _global_script_class_icons={
 
 [application]
 
-config/name="mizjam1"
+config/name="beats_and_bones"
+config/description="\"Beats and Bones\" is a retro 8bit style adventure game where you complete rhythm challenges instead of hacking and slashing your way to victory.
+This was the first game I have ever made using Godot, and also the first game I've ever completed during a game jam, so expectations should be set accordingly. :)"
 run/main_scene="res://menu.tscn"
 run/disable_stdout=true
 run/disable_stderr=true

@@ -1,9 +1,9 @@
 # Introduction
 
-The game is titled "Beats and Bones" and is a retro 8bit style adventure game where you complete rhythym challenges instead of hacking and slashing your way to victory.
+The game is titled "Beats and Bones" and is a retro 8bit style adventure game where you complete rhythm challenges instead of hacking and slashing your way to victory.
 This was the first game I have ever made using Godot, and also the first game I've ever completed during a game jam, so expectations should be set accordingly. :)
 
-I didn't have time to find 8bit music and assign specific rhythym courses to each song, so I just procedurally generated the beats and play a bass/snare sound to keep the tempo.
+I didn't have time to find 8bit music and assign specific rhythm courses to each song, so I just procedurally generated the beats and play a bass/snare sound to keep the tempo.
 It might be hard for people that aren't musically inclined to follow, but it's all I had time for.
 
 **Game rules**
