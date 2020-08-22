@@ -36,9 +36,12 @@ func _on_exit_button_pressed():
 
 
 func _input(event):
-	# any key press starts the game from the instructions screen
-	if $instructions.visible and event is InputEventKey and event.pressed:
-		start_game()
+	# any key press or click starts the game from the instructions screen
+	if $instructions.visible:
+		if event is InputEventKey and event.pressed:
+			start_game()
+		elif event is InputEventMouseButton and event.pressed:
+			start_game() 
 
 
 func start_game():

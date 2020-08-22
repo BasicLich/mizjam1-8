@@ -137,3 +137,9 @@ started: 2020-08-21 @ 14:42
 - each area has one or two harder enemies that can be faced
 
 stopped: 2020-08-21 @ 15:53
+
+started: 2020-08-21 @ 20:23
+
+- the tempo still doesn't really match up with the beats very well, add hacky constant to line up beats better
+- tweaked some tempos that were too fast, did a few play throughs and it seems okay now
+- go through the project settings to prepare for exporting the "final" version

@@ -1,6 +1,6 @@
 extends Node2D
 
-var TOP_EDGE = -216
+var TOP_EDGE = 16
 var ARROW_HEIGHT = 32.0
 
 var MOVES = {
@@ -42,6 +42,7 @@ var tick = 0
 var scores
 var ended = false
 var course_arrows = []
+var total_arrows
 var flash_message = preload("res://flash_message.tscn")
 
 onready var arrow_templates = {
@@ -65,12 +66,15 @@ func _ready():
 	var ms_per_beat = 60000.0 / rhythm_game.TEMPO
 	# figure out how many pixels the arrow will have to move per second at this tempo
 	pixel_per_sec = ARROW_HEIGHT / (ms_per_beat / 1000.0)
+	# set spawn position to line up beats, multiply by a constant that seems to line of the beats? good enough...
+	self.position.y = 34 + (6 * ARROW_HEIGHT) + (rhythm_game.TEMPO * 0.1235)
 	
 	rng = RandomNumberGenerator.new()
 	rng.randomize()
 
 	scores = get_parent().get_node("arrow_controller").scores
 	course_arrows = generate_course(rhythm_game.TOTAL_BEATS)
+	total_arrows = len(course_arrows)
 	
 	tempo_timer = Timer.new()
 	tempo_timer.wait_time = ms_per_beat / 1000.0
@@ -93,7 +97,7 @@ func _process(delta):
 			all_empty = false
 			a.position.y -= pixel_per_sec * delta
 
-			if a.position.y <= TOP_EDGE:
+			if a.global_position.y <= TOP_EDGE:
 				a.queue_free()
 				arrows[dir].erase(a)
 
@@ -102,7 +106,7 @@ func _process(delta):
 				get_parent().add_child(msg)
 				scores[Hit.MISS] += 1
 	
-	if all_empty and len(course_arrows) == 0:
+	if all_empty and tick >= total_arrows:
 		tempo_timer.stop()
 		for c in dance_chars:
 			c.set_rotation_degrees(0)
@@ -110,7 +114,7 @@ func _process(delta):
 		
 		# wait a while before ending the round
 		delay_timer = Timer.new()
-		delay_timer.wait_time = 4.0
+		delay_timer.wait_time = 3.0
 		delay_timer.autostart = true
 		delay_timer.one_shot = true
 		delay_timer.connect("timeout", self, "end_course")
@@ -143,7 +147,7 @@ func calculate_score():
 
 func end_course():
 	# check if misses > 50% of beats
-	if scores[Hit.MISS] > (scores[Hit.PERFECT] + scores[Hit.GREAT] + scores[Hit.GOOD]):
+	if global.total_misses > (global.total_perfects + global.total_greats + global.total_goods):
 		global.lose = true
 
 	call_deferred("emit_signal", "rhythm_complete", get_parent())
@@ -152,31 +156,26 @@ func end_course():
 func tempo_tick():
 	# rotate characters back and forth
 	# yes I should probably use a sinwave here, but too lazy
-	for c in dance_chars:
-		if c.rotation_degrees < 0:
-			c.set_rotation_degrees(20)
-		else:
-			c.set_rotation_degrees(-20)
-	
 	if (tick % 2) == 0:
+		for c in dance_chars:
+			c.set_rotation_degrees(20)
 		kick_sound.play()
 	else:
+		for c in dance_chars:
+			c.set_rotation_degrees(-20)
 		snare_sound.play()
 	tick += 1
 
-	if len(course_arrows) == 0:
+	if tick >= total_arrows:
 		return
 
 	# setup the next arrows
-	var next = course_arrows[0]
+	var next = course_arrows[tick]
 	if typeof(next) == TYPE_ARRAY:
 		for a in next:
 			spawn_arrow(a)
 	else:
 		spawn_arrow(next)
-
-	course_arrows.remove(0)
-
 
 
 func spawn_arrow(direction):

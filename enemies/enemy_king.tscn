@@ -17,7 +17,7 @@ radius = 50.01
 script = ExtResource( 2 )
 MOVE_SPEED = 60
 MAX_FOLLOW_DIST = 100
-TEMPO = 200
+TEMPO = 180
 TOTAL_BEATS = 40
 
 [node name="Sprite" type="Sprite" parent="."]

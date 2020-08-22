@@ -12,8 +12,8 @@ var SCALE_FACTOR = Vector2(2.5, 2.5)
 var SCALE_SPEED = 20
 
 # maximum distance a moving arrow will be counted as a "hit"
-var ARROW_DIST_PERFECT:float = 1.2
-var ARROW_DIST_GREAT:float = 1.8
+var ARROW_DIST_PERFECT:float = 1.5
+var ARROW_DIST_GREAT:float = 2.0
 var ARROW_DIST_GOOD:float = 5.0
 var ARROW_DIST_MISS:float = 20.0
 
@@ -93,7 +93,8 @@ func _input(event):
 
 func handle_arrow_hit(target:Vector2, arrows:Array):
 	for a in arrows:
-		var dist:float = target.distance_to(a.global_position)
+		var dist = target.distance_to(a.global_position)
+		print(dist)
 		var hit = null
 		
 		if dist <= ARROW_DIST_PERFECT:
