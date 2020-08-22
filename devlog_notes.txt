@@ -143,3 +143,8 @@ started: 2020-08-21 @ 20:23
 - the tempo still doesn't really match up with the beats very well, add hacky constant to line up beats better
 - tweaked some tempos that were too fast, did a few play throughs and it seems okay now
 - go through the project settings to prepare for exporting the "final" version
+
+22:40
+- final tweaks, uploaded game to itch.io and submitted
+
+stopped: 2020-08-21 @ 22:40
